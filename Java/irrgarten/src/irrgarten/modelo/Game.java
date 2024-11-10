@@ -36,8 +36,8 @@ public class Game {
             Player p = new Player(Integer.toString(i).charAt(0), Dice.randomIntelligence(), Dice.randomStrength());
             players.add(p);
         }
-        this.currentPlayer = players.get(0);
-        this.currentPlayerlndex = 0;
+        this.currentPlayerlndex = Dice.whoStarts(nplayers);
+        this.currentPlayer = players.get(currentPlayerlndex);
         this.monsters = new ArrayList<>();
         int auxCol=5, auxRow = 5;
         this.labyrinth = new Labyrinth (auxRow, auxCol, Dice.randomPos(auxCol), Dice.randomPos(auxRow));

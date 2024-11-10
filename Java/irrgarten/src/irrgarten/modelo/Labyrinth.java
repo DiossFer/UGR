@@ -182,7 +182,7 @@ public class Labyrinth {
                 this.charTable[row][col] = MONSTER_CHAR;
                 
                 monster.setCol(col);
-                monster.setRow(col);
+                monster.setRow(row);
             }
         }
     }
