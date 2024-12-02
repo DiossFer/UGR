@@ -248,7 +248,12 @@ public class Game {
         boolean resurrect = Dice.resurrectPlayer();
         if (resurrect){
             currentPlayer.resurrect();
+            
+            currentPlayer=new FuzzyPlayer(currentPlayer);
+            players.set(currentPlayerlndex, currentPlayer);
+            
             logResurrected();
+            
         }else{
             logPlayerSkipTurn();
         }

@@ -4,6 +4,7 @@
  */
 package irrgarten.modelo;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -155,4 +156,16 @@ public class Dice {
         return destroy;
     }
     
+    public static Directions nextStep(Directions preference, ArrayList<Directions> validMoves, float intelligence){
+        Directions d = null;
+        
+        if (generator.nextFloat(MAX_INTELLIGENCE) < intelligence){
+            d=preference;
+        }else{
+            d = validMoves.get(generator.nextInt(validMoves.size()));
+        }
+        
+        
+        return d;
+    }
 }
