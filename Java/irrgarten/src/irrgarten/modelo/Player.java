@@ -24,6 +24,9 @@ public class Player extends LabyrinthCharacter{
     private int consecutiveHits;
     private ArrayList<Weapon> weapons;
     private ArrayList<Shield> shields;
+    
+    private WeaponCardDeck weaponCardDeck;
+    private ShieldCardDeck shieldCardDeck;
 
     ///////////////////////////////////////////////////////////////////
     /////////////////          Constructores          /////////////////
@@ -36,6 +39,8 @@ public class Player extends LabyrinthCharacter{
         this.consecutiveHits = 0;
         this.weapons = new ArrayList<>();
         this.shields = new ArrayList<>();
+        this.weaponCardDeck = new WeaponCardDeck();
+        this.shieldCardDeck = new ShieldCardDeck();
     }
     public Player(Player p) {
         super(p);
@@ -43,6 +48,8 @@ public class Player extends LabyrinthCharacter{
         this.consecutiveHits = p.consecutiveHits;
         this.weapons = p.weapons;
         this.shields = p.shields;
+        this.shieldCardDeck = p.shieldCardDeck;
+        this.weaponCardDeck = p.weaponCardDeck;
     }
 
     
@@ -151,11 +158,11 @@ public class Player extends LabyrinthCharacter{
         int wReward = Dice.weaponsReward();
         int sReward = Dice.shieldsReward();
         for (int i=1; i<=wReward; i++){
-            Weapon wNew = new Weapon(Dice.weaponPower(), Dice.usesLeft());
+            Weapon wNew = (Weapon) weaponCardDeck.nextCard();
             receiveWeapon(wNew);
         }
         for (int i=1; i<=sReward; i++){
-            Shield sNew = new Shield(Dice.shieldPower(), Dice.usesLeft());
+            Shield sNew = (Shield) shieldCardDeck.nextCard();
             receiveShield(sNew);
         }
     }
