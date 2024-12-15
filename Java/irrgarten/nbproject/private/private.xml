@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/fnand/Documents/NetBeansProjects/GIT/UGR/Java/irrgarten/src/irrgarten/modelo/Game.java</file>
-            <file>file:/C:/Users/fnand/Documents/NetBeansProjects/GIT/UGR/Java/irrgarten/src/irrgarten/modelo/Dice.java</file>
-            <file>file:/C:/Users/fnand/Documents/NetBeansProjects/GIT/UGR/Java/irrgarten/src/irrgarten/modelo/Monster.java</file>
-            <file>file:/C:/Users/fnand/Documents/NetBeansProjects/GIT/UGR/Java/irrgarten/src/irrgarten/modelo/Player.java</file>
-            <file>file:/C:/Users/fnand/Documents/NetBeansProjects/GIT/UGR/Java/irrgarten/src/irrgarten/modelo/LabyrinthCharacter.java</file>
-            <file>file:/C:/Users/fnand/Documents/NetBeansProjects/GIT/UGR/Java/irrgarten/src/irrgarten/modelo/FuzzyPlayer.java</file>
+            <file>file:/C:/Users/fnand/Documents/NetBeansProjects/GIT/UGR/Java/irrgarten/src/irrgarten/UI/Cursors.java</file>
+            <file>file:/C:/Users/fnand/Documents/NetBeansProjects/GIT/UGR/Java/irrgarten/src/irrgarten/UI/GraphicalUI.java</file>
+            <file>file:/C:/Users/fnand/Documents/NetBeansProjects/GIT/UGR/Java/irrgarten/src/irrgarten/Main.java</file>
+            <file>file:/C:/Users/fnand/Documents/NetBeansProjects/GIT/UGR/Java/irrgarten/src/irrgarten/UI/UI.java</file>
+            <file>file:/C:/Users/fnand/Documents/NetBeansProjects/GIT/UGR/Java/irrgarten/src/irrgarten/UI/TextUI.java</file>
         </group>
     </open-files>
 </project-private>

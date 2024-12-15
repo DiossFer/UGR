@@ -7,6 +7,7 @@ package irrgarten;
 import irrgarten.modelo.Game;
 import irrgarten.UI.TextUI;
 import irrgarten.controller.Controller;
+import irrgarten.UI.GraphicalUI;
 
 /**
  *
@@ -15,7 +16,7 @@ import irrgarten.controller.Controller;
 public class Main {
     
     public static void main(String[] args) {
-        Controller c = new Controller(new Game(2), new TextUI());
+        Controller c = new Controller(new Game(2), new GraphicalUI());
         c.play();
     }
     

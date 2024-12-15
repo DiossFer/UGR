@@ -6,14 +6,14 @@ import irrgarten.modelo.Game;
 import irrgarten.modelo.Game;
 import irrgarten.UI.TextUI;
 import irrgarten.modelo.*;
-
+import irrgarten.UI.GraphicalUI;
 
 public class Controller {
     
     private Game game;
-    private TextUI view;
+    private GraphicalUI view;
     
-    public Controller(Game game, TextUI view) {
+    public Controller(Game game, GraphicalUI view) {
         this.game = game;
         this.view = view;
     }
