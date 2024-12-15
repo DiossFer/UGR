@@ -1,34 +1,34 @@
 # frozen_string_literal: true
+require_relative 'labyrinth_character'
 module Irrgarten
 
-  class Player
-    attr_accessor :number, :intelligence, :strengtg, :name, :row, :col, :consecutiveHits
+  class Player < LabyrinthCharacter
+    attr_accessor :number, :intelligence, :strength, :name, :row, :col, :consecutiveHits, :weapons, :shields
     @@MAX_WEAPONS = 2
     @@MAX_SHIELDS = 3
     @@INITIAL_HEALTH = 10
     @@HITS2LOSE = 3
 
-    def initialize(number, intelligence, strengtg)
-      @number = number
-      @intelligence = intelligence
-      @strengtg = strengtg
-
-      @name = "Player #"+number
-      @health = @@INITIAL_HEALTH
-      @row = 0
-      @col = 0
+    def initialize(number, intelligence, strength)
+      super("Player #"+number.to_s, intelligence, strength, @@INITIAL_HEALTH)
       @consecutiveHits = 0
       @weapons = Array.new
       @shields = Array.new
+      @number = number
+    end
+
+    def newCopia(other)
+      newP = super(other)
+
+      @consecutiveHits = other.consecutiveHits
+      @weapons = other.weapons
+      @shields = other.shields
+      @number = other.number
+      newP
 
     end
 
 
-
-    def setPos(row, col)
-      @col = col
-      @row = row
-    end
 
     def resurrect ()
       resetHits()
@@ -38,17 +38,11 @@ module Irrgarten
     end
 
 
-    def dead()
-      dead=false
-      if (@health<=0)
-        dead=true
-      end
-      return dead
-    end
+
 
 
     def move (direction, validMoves)
-      puts("ENTRO A MOVE")
+
         size = validMoves.size()
         contained = validMoves.include?(direction)
         if (size>0 && (!contained))
@@ -58,13 +52,12 @@ module Irrgarten
         else
           return direction
         end
-      puts("SALGO DE MOVE")
     end
 
 
     def attack ()
           damage = sumWeapons()
-          damage += @strengtg
+          damage += @strength
           return damage
     end
 
@@ -157,7 +150,7 @@ module Irrgarten
 
 
     def defensiveEnergy()
-      defense=0.0
+      defense = 0.0
       defense += sumShields()
       defense += @intelligence
       return defense

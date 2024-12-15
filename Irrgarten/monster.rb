@@ -1,28 +1,17 @@
 # frozen_string_literal: true
+require_relative 'labyrinth_character'
 module Irrgarten
 
-  class Monster
+  class Monster  < LabyrinthCharacter
 
     @@INITIAL_HEALTH = 5
 
     def initialize (name, intelligence, strength)
-      @name = name
-      @intelligence = intelligence
-      @strength = strength
-      @health = @@INITIAL_HEALTH
-      @row = 0
-      @col = 0
+      super(name, intelligence, strength, @@INITIAL_HEALTH)
     end
 
 
-    def dead()
-      dead=false
-      if (@health<=0)
-        dead=true
-      end
 
-      return dead
-    end
 
 
 
@@ -44,13 +33,6 @@ module Irrgarten
         end
         return isDead
     end
-
-
-    def setPos(row, col)
-      @col=col
-      @row=row
-    end
-
 
     def gotWounded()
           @health=(@health-1)

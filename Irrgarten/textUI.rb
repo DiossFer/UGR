@@ -56,7 +56,7 @@ module UI
             output = Directions::RIGHT
             got_input = true
           when "a"
-            puts "a"
+            puts "LEFT ARROW"
             output = Directions::LEFT
             got_input = true
           when "\u0003"

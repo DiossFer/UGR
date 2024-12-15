@@ -12,6 +12,9 @@ require_relative 'orientation'
 require_relative 'labyrinth_square'
 require_relative 'monster_square'
 require_relative 'player_square'
+require_relative 'labyrinth_character'
+require_relative 'combat_element'
+require_relative 'controller'
 module Irrgarten
   class Game
     attr_accessor :players, :currentPlayerlndex, :log, :currentPlayer, :labyrinth, :monsters, :gameState
@@ -29,12 +32,6 @@ module Irrgarten
       end
 
       @currentPlayerlndex = Dice.whoStarts(nplayers)
-
-      puts("DEBUG------------------")
-      puts(@currentPlayerlndex)
-      puts(@players[0])
-      puts(@players[@currentPlayerlndex])
-      puts("__________________________________")
 
       @currentPlayer = @players[@currentPlayerlndex]
 
@@ -61,19 +58,14 @@ module Irrgarten
 
 
     def nextStep(preferredDirection)
-      puts("entroNextStep")
       @log=""
       dead = @currentPlayer.dead()
       if (!dead)
-        puts("-1pppppppp")
         direction = actualDirection(preferredDirection)
-        puts("-2pppppppp")
         if (direction!=preferredDirection)
           logPlayerNoOrders()
         end
-        puts("1pppppppp")
         monster = @labyrinth.putPlayer(direction, @currentPlayer)
-        puts("2pppppppp")
         if (monster==nil)
           logNoMonster()
 
@@ -96,7 +88,6 @@ module Irrgarten
 
 
       return endGame
-      puts("salgoNextStep")
     end
 
 
@@ -183,7 +174,7 @@ module Irrgarten
       lose = monster.defend(playerAttack)
 
       while ((!lose) && (rounds<@@MAX_ROUNDS))
-        puts("aaaaaaaa")
+
         winner=GameCharacter::MONSTER
         rounds+=1
         monsterAttack = monster.attack()
@@ -213,13 +204,19 @@ module Irrgarten
 
 
     def manageResurrection()
+
       resurrect = Dice.resurrectPlayer()
       if (resurrect)
         @currentPlayer.resurrect()
+
+        currentPlayer = FuzzyPlayer.new(currentPlayer)
+        players[currentPlayerlndex] = currentPlayer
+
         logResurrected()
       else
         logPlayerSkipTurn()
       end
+
     end
 
     def logPlayerWon()
@@ -236,27 +233,18 @@ module Irrgarten
     end
 
     def logPlayerSkipTurn()
-      puts("AAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-      puts(@currentPlayer)
       @log=(@log+"El jugador "+@currentPlayer.to_s+"ha perdido el turno por estar muerto"+"\n")
     end
 
     def logPlayerNoOrders()
-      puts("AAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-      puts(@currentPlayer)
       @log=(@log+"El jugador "+@currentPlayer.to_s+"no pudo cumplir con las indicaciones"+"\n")
     end
 
     def logNoMonster()
-      puts("AAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-      puts(@currentPlayer)
       @log=(@log+"El jugador "+@currentPlayer.to_s+"ha entrado a una casilla vacia"+"\n")
     end
 
     def logRounds(rounds, max)
-      puts("AAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-      puts(@currentPlayer)
-      puts("PUREBAPRUEBAPRUEBAPRUEBAPRUEBA")
       @log=(@log+"Se ha producido "+rounds.to_s+" de "+max.to_s+" rondas de combate"+"\n")
     end
 

@@ -11,9 +11,9 @@ module Control
       while (!end_of_game)
         @view.show_game(@game.getGameState())
         direction = @view.next_move
-        puts("0_111111111111111111111111111")
+
         end_of_game = @game.nextStep(direction)
-        puts("1_111111111111111111111111111")
+
       end
       @view.show_game(@game.gameState)
     end

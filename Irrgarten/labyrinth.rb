@@ -26,12 +26,11 @@ module Irrgarten
 
 
     def initialize(nRows, nCols, exitRow, exitCol)
-
       if (nRows>=1 && nCols>=1)
-
         @monstersTable = Array.new(nRows) { Array.new(nCols) }
         @playersTable = Array.new(nRows) { Array.new(nCols) }
         @charTable = Array.new(nRows) { Array.new(nCols) }
+
         @nRows = nRows
         @nCols = nCols
         @exitRow = exitRow
@@ -100,7 +99,6 @@ module Irrgarten
           @charTable[row][col] = @@MONSTER_CHAR
         end
       end
-
       monster.setPos(row, col)
     end
 

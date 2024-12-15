@@ -140,5 +140,18 @@ module Irrgarten
       return destroy
     end
 
+    def self.nextStep (preference, validMoves, intelligence)
+      d = nill
+
+      if (generator.nextFloat(MAX_INTELLIGENCE) < intelligence)
+        d=preference
+      else
+        d = validMoves[@@generator.rand(0 ... validMoves.size)]
+      end
+
+      return d
+    end
+
+
   end
 end
