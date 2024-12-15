@@ -1,4 +1,16 @@
-
+require_relative 'player.rb'
+require_relative 'monster.rb'
+require_relative 'game_state'
+require_relative 'shield'
+require_relative 'weapon'
+require_relative 'dice'
+require_relative 'labyrinth'
+require_relative 'directions'
+require_relative 'game_character'
+require_relative 'orientation'
+require_relative 'labyrinth_square'
+require_relative 'monster_square'
+require_relative 'player_square'
 require 'io/console'
 require_relative 'directions'
 
@@ -17,7 +29,9 @@ module UI
         input << STDIN.read_nonblock(2) rescue nil
       end
     ensure
-      STDIN.echo = true
+      ##
+      #STDIN.echo = true
+
       STDIN.cooked!
     
       return input
@@ -29,21 +43,21 @@ module UI
       while (!got_input)
         c = read_char
         case c
-          when "\e[A"
+          when "w"
             puts "UP ARROW"
-            output = Irrgarten::Directions::UP
+            output = Directions::UP
             got_input = true
-          when "\e[B"
+          when "s"
             puts "DOWN ARROW"
-            output = Irrgarten::Directions::DOWN
+            output = Directions::DOWN
             got_input = true
-          when "\e[C"
+          when "d"
             puts "RIGHT ARROW"
-            output = Irrgarten::Directions::RIGHT
+            output = Directions::RIGHT
             got_input = true
-          when "\e[D"
-            puts "LEFT ARROW"
-            output = Irrgarten::Directions::LEFT
+          when "a"
+            puts "a"
+            output = Directions::LEFT
             got_input = true
           when "\u0003"
             puts "CONTROL-C"

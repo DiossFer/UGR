@@ -53,7 +53,7 @@ module Irrgarten
 
 
     def gotWounded()
-          setHealth(@health-1)
+          @health=(@health-1)
     end
 
 

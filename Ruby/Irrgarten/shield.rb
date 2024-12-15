@@ -11,13 +11,15 @@ module Irrgarten
     end
 
     def protect ()
+      puts("PROTECT------------<<<<<<<<<<<<<")
       defense = 0.0
 
       if @uses > 0
         @uses = @uses - 1
         defense = @defense
       end
-
+      puts("ooooo________oooooo")
+      puts(defense.to_s)
       return defense
     end
 

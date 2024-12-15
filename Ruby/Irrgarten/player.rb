@@ -48,8 +48,9 @@ module Irrgarten
 
 
     def move (direction, validMoves)
+      puts("ENTRO A MOVE")
         size = validMoves.size()
-        contained = validMoves.contains(direction)
+        contained = validMoves.include?(direction)
         if (size>0 && (!contained))
           firstElement = validMoves[0]
           return firstElement
@@ -57,7 +58,7 @@ module Irrgarten
         else
           return direction
         end
-
+      puts("SALGO DE MOVE")
     end
 
 

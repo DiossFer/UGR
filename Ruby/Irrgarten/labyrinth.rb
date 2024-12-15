@@ -106,8 +106,8 @@ module Irrgarten
 
     def putPlayer(direction, player)
 
-      oldRow = player.getRow()
-      oldCol = player.getCol()
+      oldRow = player.row
+      oldCol = player.col
 
       newPos = dir2Pos(oldRow, oldCol, direction)
 
@@ -306,7 +306,7 @@ module Irrgarten
       output = nil
       if (canStepOn(row, col))
         if (posOK(oldRow, oldCol))
-          Player p = @playersTable [oldRow][oldCol]
+          p = @playersTable [oldRow][oldCol]
           if (player == p)
             updateOldPos(oldRow, oldCol)
             @playersTable[oldRow][oldCol]=nil
